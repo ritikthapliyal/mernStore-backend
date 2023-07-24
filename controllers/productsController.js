@@ -45,6 +45,3 @@ const fetchProductById = async(req,res)=>{
 }
 
 module.exports = {fetchAllProducts,fetchProductById}
-
-
-

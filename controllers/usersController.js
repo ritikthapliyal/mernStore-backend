@@ -14,7 +14,7 @@ function generateToken(res,userId){
     res.cookie('jwt', token, {
         httpOnly:true,
         sameSite: 'strict',
-        maxAge : 2 * 60 * 1000
+        maxAge : 2 * 60 * 1000,
     })
 
 }
@@ -22,11 +22,15 @@ function generateToken(res,userId){
 
 
 const authUser = async(req,res)=>{
+
+    console.log(req.body)
    
     try{
         const {email,password} = req.body
     
         const user = await User.findOne({email})
+
+        console.log(user)
 
         if(user && await bcrypt.compare(password,user.password)){
 
